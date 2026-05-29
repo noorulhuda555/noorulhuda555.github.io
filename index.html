@@ -20,7 +20,6 @@
     }
     body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; }
 
-    /* ── Header ── */
     header {
       max-width: 900px; margin: 0 auto;
       padding: 72px 32px 56px;
@@ -47,7 +46,6 @@
     .btn-out { border: 1px solid var(--rule); color: var(--ink2); }
     .btn-out:hover { border-color: var(--ink2); color: var(--ink); }
 
-    /* ── Grid ── */
     .grid-wrap { max-width: 900px; margin: 0 auto; padding: 48px 32px 80px; }
     .grid-label { font-family: var(--mono); font-size: 11px; color: var(--ink2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px; }
     .grid {
@@ -56,7 +54,6 @@
       gap: 12px;
     }
 
-    /* ── Card ── */
     .card {
       background: var(--card);
       border: 1px solid var(--rule);
@@ -68,7 +65,6 @@
     .card:hover { border-color: var(--accent); box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
     .card.open { border-color: var(--accent); grid-column: span 3; }
 
-    /* Card preview (always visible) */
     .card-preview { padding: 22px 22px 18px; }
     .card-type {
       font-family: var(--mono); font-size: 10px; color: var(--accent);
@@ -91,7 +87,6 @@
     }
     .card.open .card-arrow { transform: rotate(180deg); }
 
-    /* Card expand */
     .card-body {
       max-height: 0; overflow: hidden;
       transition: max-height 0.4s ease, padding 0.3s;
@@ -125,9 +120,9 @@
 <body>
 
   <header>
-    <p class="tag">Data Science · AI/ML/DL · Data Engineering·</p>
+    <p class="tag">Data Science · AI/ML/DL · Data Engineering</p>
     <h1>Noor Ul Huda<br><em>Data Science,<br>NLP & AI.</em></h1>
-    <p class="bio">BS Data Science @ FAST NUCES Islamabad. NLP intern at KDD Lab. Researcher in Deep learning, AI Models and Data</p>
+    <p class="bio">BS Data Science @ FAST NUCES Islamabad. NLP intern at KDD Lab. Researcher in Deep learning, AI Models and Data.</p>
     <div class="links">
       <a href="https://mail.google.com/mail/?view=cm&to=noorulhuda2114@gmail.com" target="_blank" class="btn btn-fill">Email me →</a>
       <a href="http://www.linkedin.com/in/noor-ul-huda-025789288" target="_blank" class="btn btn-out">LinkedIn</a>
@@ -188,7 +183,7 @@
         <div class="card-body">
           <div class="card-body-inner">
             <p class="card-desc">End-to-end Urdu processing pipelines for multiple TTS systems at KDD Lab. Engineered a phoneme-level BERT model for Urdu, enhancing language-specific feature extraction for downstream NLP tasks. Trained on Urdu speech benchmark datasets.</p>
-            <a href="" target="_blank" class="card-link">Code Available upon request due to NDA restrictions↗</a>
+            <a href="" class="card-link">Code available on request (NDA)</a>
           </div>
         </div>
       </div>
@@ -261,6 +256,42 @@
           <div class="card-body-inner">
             <p class="card-desc">40 years of macroeconomic indicators from WDI. Benchmarked ARIMA, LASSO, Ridge, and Elastic Net — best model achieved MSE of 8.85. Compared predicted vs actual values graphically across all models.</p>
             <a href="https://github.com/noorulhuda555/Inflation-Analysis.git" target="_blank" class="card-link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Project · Machine Learning</p>
+          <p class="card-title">Customer Behavior Analysis: Regression, Decision Tree & K-Means</p>
+          <div class="card-tags">
+            <span class="ctag">scikit-learn</span><span class="ctag">K-Means</span><span class="ctag">Decision Tree</span><span class="ctag">Regression</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">Compared Regression (R² 0.888), Decision Tree (F1 0.96), and K-Means clustering for customer behavior analysis on an electronics dataset. Segmented customers into 3 clusters by age and purchase frequency. Delivered actionable recommendations for targeted promotions, inventory optimization, and customer retention strategies.</p>
+            <a href="https://github.com/noorulhuda555/Sales-Growth-Analysis.git" target="_blank" class="card-link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Project · Computer Vision · NLP</p>
+          <p class="card-title">Movie Genre Classification from YouTube Trailers</p>
+          <div class="card-tags">
+            <span class="ctag">PyTorch</span><span class="ctag">MobileNetV2</span><span class="ctag">OpenCV</span><span class="ctag">scikit-learn</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">Classifies movie genres from YouTube trailer videos using transfer learning. Downloads trailers via yt-dlp, samples frames with OpenCV, extracts visual features using a pretrained MobileNetV2 backbone, then trains a logistic regression classifier. Trained on MovieLens dataset with top 10 genres extracted and visualized.</p>
+            <a href="https://github.com/noorulhuda555/Movie-genre-detection.git" target="_blank" class="card-link">GitHub ↗</a>
           </div>
         </div>
       </div>
