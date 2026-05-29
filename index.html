@@ -1,1 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noor Ul Huda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Epilogue:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9f8f6;
+      --ink: #1a1915;
+      --ink2: #6b6860;
+      --rule: #e2dfd9;
+      --accent: #2d4a3e;
+      --card: #ffffff;
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'Epilogue', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; }
 
+    /* ── Header ── */
+    header {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 32px 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .tag {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 18px;
+    }
+    h1 {
+      font-family: var(--serif); font-size: clamp(44px, 7vw, 72px);
+      font-weight: 300; line-height: 1.08; margin-bottom: 18px;
+    }
+    h1 em { font-style: italic; color: var(--ink2); }
+    .bio { font-size: 16px; color: var(--ink2); max-width: 500px; line-height: 1.8; margin-bottom: 32px; }
+    .links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 9px 20px; border-radius: 2px;
+      text-decoration: none; transition: all 0.18s; display: inline-block;
+    }
+    .btn-fill { background: var(--accent); color: #fff; }
+    .btn-fill:hover { background: #1d3328; }
+    .btn-out { border: 1px solid var(--rule); color: var(--ink2); }
+    .btn-out:hover { border-color: var(--ink2); color: var(--ink); }
+
+    /* ── Grid ── */
+    .grid-wrap { max-width: 900px; margin: 0 auto; padding: 48px 32px 80px; }
+    .grid-label { font-family: var(--mono); font-size: 11px; color: var(--ink2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+    }
+    .card:hover { border-color: var(--accent); box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .card.open { border-color: var(--accent); grid-column: span 3; }
+
+    /* Card preview (always visible) */
+    .card-preview { padding: 22px 22px 18px; }
+    .card-type {
+      font-family: var(--mono); font-size: 10px; color: var(--accent);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: var(--serif); font-size: 19px; font-weight: 400;
+      line-height: 1.3; margin-bottom: 12px;
+    }
+    .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .ctag {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+      padding: 3px 8px; border: 1px solid var(--rule); border-radius: 2px;
+      color: var(--ink2); text-transform: uppercase;
+    }
+    .card-arrow {
+      display: block; text-align: right;
+      font-size: 16px; color: var(--ink2); padding: 0 22px 14px;
+      transition: transform 0.25s; user-select: none;
+    }
+    .card.open .card-arrow { transform: rotate(180deg); }
+
+    /* Card expand */
+    .card-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      border-top: 0px solid var(--rule);
+    }
+    .card.open .card-body {
+      max-height: 500px;
+      border-top: 1px solid var(--rule);
+    }
+    .card-body-inner { padding: 24px 22px 26px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; }
+    .card-desc { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+    .card-link {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.07em;
+      text-decoration: none; color: var(--accent); border: 1px solid var(--accent);
+      padding: 8px 16px; border-radius: 2px; white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .card-link:hover { background: var(--accent); color: #fff; }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .card.open { grid-column: span 1; }
+      .card-body-inner { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 641px) and (max-width: 800px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .card.open { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="tag">Data Science · AI/ML/DL · Data Engineering·</p>
+    <h1>Noor Ul Huda<br><em>Data Science,<br>NLP & AI.</em></h1>
+    <p class="bio">BS Data Science @ FAST NUCES Islamabad. NLP intern at KDD Lab. Researcher in Deep learning, AI Models and Data</p>
+    <div class="links">
+      <a href="mailto:noorulhuda2114@gmail.com" class="btn btn-fill">Email me →</a>
+      <a href="http://www.linkedin.com/in/noor-ul-huda-025789288" target="_blank" class="btn btn-out">LinkedIn</a>
+      <a href="https://github.com/noorulhuda555" target="_blank" class="btn btn-out">GitHub</a>
+    </div>
+  </header>
+
+  <div class="grid-wrap">
+    <p class="grid-label">Projects & Research — click to expand</p>
+    <div class="grid" id="grid">
+
+      <!-- 1 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Research · Under Review</p>
+          <p class="card-title">Multilingual Voice Command Understanding</p>
+          <div class="card-tags">
+            <span class="ctag">NLP</span><span class="ctag">Multilingual</span><span class="ctag">SLU</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">Bilingual spoken language understanding using multilingual NLP techniques. Covers user intent detection and multilingual speech processing across code-switched utterances. Preprint on OpenReview (2026).</p>
+            <a href="https://openreview.net/forum?id=cEOMC7DoH9" target="_blank" class="card-link">OpenReview ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Research · Submitted</p>
+          <p class="card-title">ETANet: Driver Drowsiness Detection</p>
+          <div class="card-tags">
+            <span class="ctag">Computer Vision</span><span class="ctag">Transformer</span><span class="ctag">EfficientNet</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">Hybrid architecture combining Transformer encoder with EfficientNetB0 for drowsiness detection. Achieved 99.05% on MRL Eyes and 99.04% on NTHU-DDD, outperforming CNN baselines. Evaluated on accuracy, precision, recall, F1, and AUC. Preprint on OpenReview (2026).</p>
+            <a href="https://openreview.net/forum?id=xWuddih1ZL" target="_blank" class="card-link">OpenReview ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Project · NLP · Internship</p>
+          <p class="card-title">Urdu NLP Pipeline & Phoneme BERT</p>
+          <div class="card-tags">
+            <span class="ctag">PyTorch</span><span class="ctag">BERT</span><span class="ctag">TTS</span><span class="ctag">Urdu</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">End-to-end Urdu processing pipelines for multiple TTS systems at KDD Lab. Engineered a phoneme-level BERT model for Urdu, enhancing language-specific feature extraction for downstream NLP tasks. Trained on Urdu speech benchmark datasets.</p>
+            <a href="" target="_blank" class="card-link">Code Available upon request due to NDA restrictions↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Project · Data Engineering</p>
+          <p class="card-title">Near Real-Time Data Warehouse ETL</p>
+          <div class="card-tags">
+            <span class="ctag">Python</span><span class="ctag">MySQL</span><span class="ctag">ETL</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">Hybrid join ETL pipeline across 550,000+ records achieving 50% reduction in join time. Results loaded into MySQL data warehouse enabling near real-time inventory and sales analytics for business reporting.</p>
+            <a href="https://github.com/noorulhuda555/Near-Real-Time-Data-Warehouse-ETL-and-Hybrid-join-.git" target="_blank" class="card-link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Project · ML · Visualization</p>
+          <p class="card-title">Heart Disease Analysis & CNN Classifier</p>
+          <div class="card-tags">
+            <span class="ctag">TensorFlow</span><span class="ctag">scikit-learn</span><span class="ctag">Streamlit</span><span class="ctag">SHAP</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">EDA, K-means clustering and supervised classifiers on Heart Disease UCI dataset. CNN on MNIST achieving 98% accuracy. Deployed a Streamlit app with SHAP-based explanations for stakeholder-friendly model interpretation.</p>
+            <a href="https://github.com/noorulhuda555/heartbeat-to-heatmaps" target="_blank" class="card-link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Project · Business Intelligence</p>
+          <p class="card-title">Disaster Resilience Analytics Dashboard</p>
+          <div class="card-tags">
+            <span class="ctag">Python</span><span class="ctag">Tableau</span><span class="ctag">World Bank</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">Multi-source dataset integration for 217 countries (2000–2024) with 15+ engineered features for exposure, vulnerability and adaptive capacity. Tableau dashboards revealing governance, healthcare and economic safety nets as top resilience investment factors.</p>
+            <a href="https://github.com/noorulhuda555/A-data-Driven-Framework-for-Global-Disaster-Risk-Response-and-Recovery-Analytics-Visualization.git" target="_blank" class="card-link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="card" onclick="toggle(this)">
+        <div class="card-preview">
+          <p class="card-type">Project · Forecasting</p>
+          <p class="card-title">Pakistan Inflation Forecasting Study</p>
+          <div class="card-tags">
+            <span class="ctag">ARIMA</span><span class="ctag">LASSO</span><span class="ctag">Ridge</span><span class="ctag">Python</span>
+          </div>
+        </div>
+        <span class="card-arrow">↓</span>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-desc">40 years of macroeconomic indicators from WDI. Benchmarked ARIMA, LASSO, Ridge, and Elastic Net — best model achieved MSE of 8.85. Compared predicted vs actual values graphically across all models.</p>
+            <a href="https://github.com/noorulhuda555/Inflation-Analysis.git" target="_blank" class="card-link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggle(card) {
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
+      if (!isOpen) card.classList.add('open');
+    }
+  </script>
+</body>
+</html>
