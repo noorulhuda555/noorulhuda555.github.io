@@ -151,7 +151,7 @@
 
   <header>
     <p class="tag">Data Science · AI/ML/DL · Data Engineering</p>
-    <h1>Noor Ul Huda<br><em>Data Science,<br>NLP & AI.</em></h1>
+    <h1>Noor Ul Huda<br><em>Data Science,<br>Data is only valuable when it drives better decisions</em></h1>
     <p class="bio">Data Science undergraduate @ FAST NUCES. Xintern in NLP Domain at KDD Research Lab (FAST NUCES). Interested in Deep learning, AI Models and Data.</p>
     <div class="links">
       <a href="https://mail.google.com/mail/?view=cm&to=noorulhuda2114@gmail.com" target="_blank" class="btn btn-fill">Email me →</a>
@@ -232,6 +232,23 @@
             <div class="card-body-inner">
               <p class="card-desc">End-to-end Urdu processing pipelines for multiple TTS systems at KDD Lab. Engineered a phoneme-level BERT model for Urdu, enhancing language-specific feature extraction for downstream NLP tasks. Trained on Urdu speech benchmark datasets.</p>
               <a href="" class="card-link">Source unavailbe as per Lab NDA restriction</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="toggle(this)">
+          <div class="card-preview">
+            <p class="card-type">Project · Computer Vision</p>
+            <p class="card-title">Smart Traffic Analytics System</p>
+            <div class="card-tags">
+              <span class="ctag">YOLOv8</span><span class="ctag">DeepSORT</span><span class="ctag">OpenCV</span><span class="ctag">Python</span>
+            </div>
+          </div>
+          <span class="card-arrow">↓</span>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <p class="card-desc">Real-time traffic analytics system detecting and tracking 4 vehicle classes (cars, motorcycles, buses, trucks) using YOLOv8 and DeepSORT. Assigns persistent unique IDs across frames, counts vehicles crossing a configurable line, and renders live annotated previews with bounding boxes, ID trails, and per-class detection. Counted 22 unique vehicles across 26 frames on CPU inference. Speed estimation module in active development.</p>
+              <a href="https://github.com/noorulhuda555/Traffic-Analysis-system" target="_blank" class="card-link">GitHub ↗</a>
             </div>
           </div>
         </div>
@@ -384,12 +401,9 @@
     }
 
     function switchTab(id, btn) {
-      // close any open cards
       document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
-      // hide all panels, deactivate all tabs
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      // activate selected
       document.getElementById('panel-' + id).classList.add('active');
       btn.classList.add('active');
     }
