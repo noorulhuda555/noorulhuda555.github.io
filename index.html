@@ -30,10 +30,18 @@
       letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 18px;
     }
     h1 {
-      font-family: var(--serif); font-size: clamp(44px, 7vw, 72px);
-      font-weight: 300; line-height: 1.08; margin-bottom: 18px;
+      font-family: var(--serif); font-size: clamp(32px, 5.5vw, 48px);
+      font-weight: 400; line-height: 1.15; margin-bottom: 18px;
     }
     h1 em { font-style: italic; color: var(--ink2); }
+    .hook {
+      display: block;
+      font-size: 0.5em;
+      font-weight: 300;
+      color: var(--ink2);
+      line-height: 1.4;
+      margin-top: 8px;
+    }
     .bio { font-size: 16px; color: var(--ink2); max-width: 500px; line-height: 1.8; margin-bottom: 32px; }
     .links { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
@@ -125,6 +133,7 @@
       max-height: 500px;
       border-top: 1px solid var(--rule);
     }
+    .card.open#panel-data-ml .card-body { max-height: 600px; } /* Buffer for dense grids */
     .card-body-inner { padding: 24px 22px 26px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; }
     .card-desc { font-size: 14px; color: var(--ink2); line-height: 1.75; }
     .card-link {
@@ -151,7 +160,7 @@
 
   <header>
     <p class="tag">Data Science · AI/ML/DL · Data Engineering</p>
-    <h1>Noor Ul Huda<br>Data is only valuable when it drives better decisions</em></h1>
+    <h1>Noor Ul Huda <span class="hook"><em>Data is only valuable when it drives better decisions</em></span></h1>
     <p class="bio">Data Science undergraduate @ FAST NUCES. Xintern in NLP Domain at KDD Research Lab (FAST NUCES). Interested in Deep learning, AI Models and Data.</p>
     <div class="links">
       <a href="https://mail.google.com/mail/?view=cm&to=noorulhuda2114@gmail.com" target="_blank" class="btn btn-fill">Email me →</a>
@@ -160,7 +169,6 @@
     </div>
   </header>
 
-  <!-- TAB BAR -->
   <div class="tabs-wrap">
     <div class="tabs" role="tablist">
       <button class="tab-btn active" role="tab" onclick="switchTab('research', this)">Research</button>
@@ -172,7 +180,6 @@
 
   <div class="grid-wrap">
 
-    <!-- ── RESEARCH ── -->
     <div class="tab-panel active" id="panel-research" role="tabpanel">
       <p class="panel-label">Published &amp; Under Review — click to expand</p>
       <div class="grid">
@@ -214,7 +221,6 @@
       </div>
     </div>
 
-    <!-- ── NLP & CV ── -->
     <div class="tab-panel" id="panel-nlp-cv" role="tabpanel">
       <p class="panel-label">Language &amp; Visual Intelligence — click to expand</p>
       <div class="grid">
@@ -270,6 +276,13 @@
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-data-ml" role="tabpanel">
+      <p class="panel-label">Data at Scale — click to expand</p>
+      <div class="grid">
+
         <div class="card" onclick="toggle(this)">
           <div class="card-preview">
             <p class="card-type">Project · ML · Visualization</p>
@@ -286,14 +299,6 @@
             </div>
           </div>
         </div>
-
-      </div>
-    </div>
-
-    <!-- ── DATA ENGINEERING & ML ── -->
-    <div class="tab-panel" id="panel-data-ml" role="tabpanel">
-      <p class="panel-label">Data at Scale — click to expand</p>
-      <div class="grid">
 
         <div class="card" onclick="toggle(this)">
           <div class="card-preview">
@@ -334,79 +339,4 @@
             <p class="card-type">Project · Business Intelligence</p>
             <p class="card-title">Disaster Resilience Analytics Dashboard</p>
             <div class="card-tags">
-              <span class="ctag">Python</span><span class="ctag">Tableau</span><span class="ctag">World Bank</span>
-            </div>
-          </div>
-          <span class="card-arrow">↓</span>
-          <div class="card-body">
-            <div class="card-body-inner">
-              <p class="card-desc">Multi-source dataset integration for 217 countries (2000–2024) with 15+ engineered features for exposure, vulnerability and adaptive capacity. Tableau dashboards revealing governance, healthcare and economic safety nets as top resilience investment factors.</p>
-              <a href="https://github.com/noorulhuda555/A-data-Driven-Framework-for-Global-Disaster-Risk-Response-and-Recovery-Analytics-Visualization.git" target="_blank" class="card-link">GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" onclick="toggle(this)">
-          <div class="card-preview">
-            <p class="card-type">Project · Machine Learning</p>
-            <p class="card-title">Customer Behavior Analysis: Regression, Decision Tree &amp; K-Means</p>
-            <div class="card-tags">
-              <span class="ctag">scikit-learn</span><span class="ctag">K-Means</span><span class="ctag">Decision Tree</span><span class="ctag">Regression</span>
-            </div>
-          </div>
-          <span class="card-arrow">↓</span>
-          <div class="card-body">
-            <div class="card-body-inner">
-              <p class="card-desc">Compared Regression (R² 0.888), Decision Tree (F1 0.96), and K-Means clustering for customer behavior analysis on an electronics dataset. Segmented customers into 3 clusters by age and purchase frequency. Delivered actionable recommendations for targeted promotions, inventory optimization, and customer retention strategies.</p>
-              <a href="https://github.com/noorulhuda555/Sales-Growth-Analysis.git" target="_blank" class="card-link">GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── RAG & LANGCHAIN ── -->
-    <div class="tab-panel" id="panel-rag" role="tabpanel">
-      <p class="panel-label">Retrieval-Augmented Generation — click to expand</p>
-      <div class="grid">
-
-        <div class="card" onclick="toggle(this)">
-          <div class="card-preview">
-            <p class="card-type">Project · RAG · LangChain</p>
-            <p class="card-title">RAG Disaster Resilience Analytics</p>
-            <div class="card-tags">
-              <span class="ctag">LangChain</span><span class="ctag">ChromaDB</span><span class="ctag">RAG</span><span class="ctag">Python</span>
-            </div>
-          </div>
-          <span class="card-arrow">↓</span>
-          <div class="card-body">
-            <div class="card-body-inner">
-              <p class="card-desc">Conversational analytics engine built on top of the global disaster resilience dataset. Integrates multi-source data from World Bank and Our World in Data across 217 countries (2000–2024), with 15+ engineered features representing exposure, vulnerability, and adaptive capacity. ChromaDB vector store enables semantic retrieval; LangChain orchestrates the RAG chain for natural language querying of resilience insights.</p>
-              <a href="https://github.com/noorulhuda555/disability-access-auditor" target="_blank" class="card-link">GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    function toggle(card) {
-      const isOpen = card.classList.contains('open');
-      document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
-      if (!isOpen) card.classList.add('open');
-    }
-
-    function switchTab(id, btn) {
-      document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('panel-' + id).classList.add('active');
-      btn.classList.add('active');
-    }
-  </script>
-</body>
-</html>
+              <span class="ctag">Python</span><span class="ctag">
